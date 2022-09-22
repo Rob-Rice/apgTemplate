@@ -1,0 +1,132 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Growth - blog post
+  screenshotPath: ../images/template-previews/blog-post.png
+-->
+{% set template_css = '../../css/templates/blog-post.css' %}
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+{# Blog post wrapper #}
+
+<div class="content-wrapper flex-columns">
+
+  {# Blog post #}
+  
+  <div class="blog-post-section">
+    <article class="blog-post">
+      <div class="blog-post__top">
+        
+       <div class="blog-post__details">
+      
+      <div class="blog-post__meta">
+        <time datetime="{{ content.publish_date }}" class="blog-post__timestamp">
+          {{content.publish_date|datetimeformat('%b %e, %Y')}}
+        </time>
+        <div class="blog-post__author"> 
+<!--     comment out to rid if image       -->
+         {#{% if content.blog_author.avatar %}
+            <img class="blog-post__author-image" src="{{ content.blog_author.avatar }}" width="50" loading="eager" alt="Picture of {{ content.blog_author.display_name }}">
+          {% endif %}#}
+<!--     comment out to rid if image       -->
+   
+          <a class="blog-post__author-name" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}" rel="author">
+            {{ content.blog_post_author.display_name }}
+          </a>
+        </div>
+      </div>
+<!--     uncomment for main image      -->
+     <img src="{{ content.featured_image }}" alt="{{ content.featured_image }}" style="height: 50vh !important; width: 50vw !important; object-fit: none !important;" />
+         
+         
+      </div>
+        <div class="socials">
+        {% module 'social_sharing'
+            path='../modules/social-sharing',
+            styles={
+              'spacing': {
+                'spacing': {
+                  'margin': {
+                    'bottom': {
+                      'value': 22,
+                      'units': 'px'
+                    }
+                  }
+                }
+              }
+            }
+          %}
+       </div>
+      </div>
+      
+      <h1>{{ content.name }}</h1>
+      
+      <div class="blog-post__body">
+        {{ content.post_body }}
+
+      </div>
+      <div class="blog-post__tags">
+          <span class="icon--light">
+            {% icon
+              extra_classes='icon blog-post__tags-icon'
+              name='tag',
+              purpose='decorative',
+              style='SOLID'
+            %}
+          </span>
+          {% for tag in content.tag_list %}
+            <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}" rel="tag">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+          {% endfor %}
+        <div class="sidebar__posts">
+     <h3>Recent Posts</h3>
+      {% module "module_16638511928125" path="/APG/modules/recent-posts hover effects", label="recent-posts hover effects" %}
+    </div> 
+
+      </div>
+    </article>
+  </div>
+ <div class="sidebar">
+    <div class="sidebar__form">
+      <h2>Newsletter Signup</h2>
+<!--       <[if lte IE 8]> -->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<!-- <![endif]> -->
+
+        
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+	region: "na1",
+	portalId: "20517373",
+	formId: "875245bb-7c6b-40ad-9298-c05299143c5d"
+});
+ </script>
+<div class="sidebar__posts">
+     {#<h3>Recent Posts</h3>
+    {% module "module_16353575739282" 
+      path="/APG/modules/recent-posts", 
+      label="recent-posts",
+      number_of_posts="5",
+      layout_style="list",
+      featured_image="false",
+      description="false",
+      button="false",
+      author="false",
+      tags="false",
+      date="false"
+    %} #}
+  </div>
+
+    </div>
+    <hr>  
+   
+    
+    
+</div> 
+</div>
+
+
+
+{% endblock body %}
