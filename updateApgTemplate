@@ -81,7 +81,7 @@
           {% endfor %}
         <div class="sidebar__posts">
      <h3>Recent Posts</h3>
-      {% module "module_16638511928125" path="/APG/modules/recent-posts hover effects", label="recent-posts hover effects" %}
+{% module "module_166387015170026" path="/APG/modules/recent-posts hover effects for blog post", label="recent-posts hover effects for blog post" %}
     </div> 
 
       </div>
