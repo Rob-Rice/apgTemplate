@@ -38,7 +38,7 @@
         </div>
       </div>
 <!--     uncomment for main image      -->
-     <img src="{{ content.featured_image }}" alt="{{ content.featured_image }}" style="height: 50vh !important; width: 50vw !important; object-fit: none !important;" />
+     <img src="{{ content.featured_image }}" alt="{{ content.featured_image }}" style="object-fit: none !important;" />
          
          
       </div>
